@@ -1,0 +1,71 @@
+.profile-image{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+
+}
+.employee{
+    width: 70vw;
+    display: flex;
+  
+    gap: 0px 20px;
+    margin: 20px 10px;
+    background-color: rgba(218, 215, 215, 0.5);
+    padding: 10px;
+}
+
+.employee-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    gap: 00px 30px;
+}
+
+.field-title{
+    font-weight: 500;
+    width: auto;
+    margin-right: 10px;
+    
+    
+}
+.application-image , .passport-image{
+    width: 120px;
+    height: 70px;
+}
+.single-field{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.select-form{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    
+}
+.select-form button{
+    background-color: white;
+    border-radius: 5px;
+    color: black;
+    padding: 8px;
+    transition: 1s;
+}
+.select-form button:hover{
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+}
+
+.action-btn{
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid red;
+    color: red;
+    padding: 8px;
+    transition: 1s;
+}
+.action-btn:hover{
+    background-color: red;
+    color: white;
+}

@@ -1,0 +1,17 @@
+.sidebar{
+    width: 20vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid black;
+}
+.option{
+    padding-right: 30px;
+    border-bottom: 2px solid black;
+}
+
+.optionnav{
+    text-decoration: none;
+    text-align: right;
+    color: black;
+}
