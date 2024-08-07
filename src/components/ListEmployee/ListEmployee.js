@@ -28,7 +28,7 @@ const ListEmployee = () => {
         data?
         data.map((item,index)=>{
           return(
-            <Employee fetchdata={fetchdata} id={item._id} name={item.name} age={item.age} birthday={item.birthday} email={item.email} address={item.address} phonenumber={item.phonenumber} qualification={item.qualification} passportnumber={item.passportnumber} citizen={item.citizen} religion={item.religion} videolink={item.videolink} profilepicture ={item.profilepicture} passport={item.passport} application={item.application} />
+            <Employee fetchdata={fetchdata} id={item._id} name={item.name} age={item.age} birthday={item.birthday} email={item.email} address={item.address} phonenumber={item.phonenumber} qualification={item.qualification} passportnumber={item.passportnumber} citizen={item.citizen} religion={item.religion} videolink={item.videolink} profilepicture ={item.profilepicture} passport={item.passport} application={item.application} selected={item.selected} />
           )
         }):
         <p>Loading</p>

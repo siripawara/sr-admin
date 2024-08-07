@@ -7,9 +7,9 @@ import { toast } from 'react-toastify'
 
 function EmployeeAdd() {
 
-  const [profilepicture, setProfilepicture] = useState(false)
-  const [application, setApplication] = useState(false)
-  const [passport, setPassport] = useState(false)
+  // const [profilepicture, setProfilepicture] = useState(false)
+  // const [application, setApplication] = useState(false)
+  // const [passport, setPassport] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [data,setData] = useState({
     name:"",
@@ -34,15 +34,15 @@ function EmployeeAdd() {
     console.log(data)
   }
 
-  const handleSubmit = async()=>{
-    
+  const handleSubmit = async(event)=>{
+    event.preventDefault()
     let finalData = {...data,
-      profilepicture,
-      application,
-      passport
+      // profilepicture,
+      // application,
+      // passport
     }
     setUploading(true)
-    const response = await axios.post(`${assets.URL}employee/add`,finalData,{headers: { "Content-Type": "multipart/form-data" }})
+    const response = await axios.post(`${assets.URL}employee/add`,finalData)
     try {
       if(response.data.success){
         window.alert(response.data.message)
@@ -60,10 +60,10 @@ function EmployeeAdd() {
           videolink:""
       
         })
-        setApplication(false)
-        setProfilepicture(false)
-        setPassport(false)
-        setUploading(false)
+        // setApplication(false)
+        // setProfilepicture(false)
+        // setPassport(false)
+        // setUploading(false)
       }else{
         window.alert("Oops...!! Something went wrong")
       }
@@ -72,12 +72,13 @@ function EmployeeAdd() {
     }finally{
       setUploading(false);
     }
+    
   }
 
   return (
     <div>
       <h2 className='title'>Add New Employee</h2>
-      <>
+      <form onSubmit={handleSubmit}>
       <div className='employeeAdd'>
         <div className='input-field'><label>Name *</label><input type="text" name="name" required onChange={(e)=>handleInputFields(e)} value={data.name}></input></div>
         <div className='input-field'><label>Age *</label><input type="number" name="age" required onChange={(e)=>handleInputFields(e)} value={data.age}></input></div>
@@ -89,37 +90,16 @@ function EmployeeAdd() {
         <div className='input-field'><label>Passport Number </label><input className='input-height' type="text" name="passportnumber"  onChange={(e)=>handleInputFields(e)} value={data.passportnumber}></input></div>
         <div className='input-field'><label>Citizen</label><input type="text" name="citizen" onChange={(e)=>handleInputFields(e)} value={data.citizen}></input></div>
         <div className='input-field'><label>Religion</label><input type="text" name="religion" onChange={(e)=>handleInputFields(e)} value={data.religion}></input></div>
-        <div className='input-field'><label>Video Link</label><input type="text" className='input-height' name="videolink" onChange={(e)=>handleInputFields(e)} value={data.videolink}></input></div>
-        <div className='input-field'>
-          <p>Profile Picture *</p>
-          <label htmlFor='profilepicture'>
-              <img className='image' src={profilepicture?URL.createObjectURL(profilepicture):assets.uploadArea}/>
-          </label>
-          <input onChange={(e)=>setProfilepicture(e.target.files[0])} name="profilepicture" type='file' id="profilepicture" hidden required/>
-        </div>
-        <div className='input-field'>
-          <p>application *</p>
-          <label htmlFor='application'>
-              <img className='image' src={application?URL.createObjectURL(application):assets.uploadArea}/>
-          </label>
-          <input onChange={(e)=>setApplication(e.target.files[0])} name="application" type='file' id="application" hidden required/>
-        </div>
-        <div className='input-field'>
-          <p>Passport *</p>
-          <label htmlFor='passport'>
-              <img className='image' src={passport?URL.createObjectURL(passport):assets.uploadArea}/>
-          </label>
-          <input onChange={(e)=>setPassport(e.target.files[0])} name="passport" type='file' id="passport" hidden required/>
-        </div>
+        <div className='input-field'><label>File Link</label><input type="text" className='input-height' name="videolink" onChange={(e)=>handleInputFields(e)} value={data.videolink}></input></div>
       </div>
       
       <div className='btn'>
         
         {
-          !uploading? <button onClick={handleSubmit}>Add</button> :<p>Uploading....</p>
+          !uploading? <button type="submit">Add</button> :<p>Uploading....</p>
         }
         </div>
-      </>
+      </form>
     </div>
   )
 }
